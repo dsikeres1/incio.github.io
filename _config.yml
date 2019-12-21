@@ -2,10 +2,10 @@
 markdown:         kramdown
 highlighter:      rouge
 
-version: 0.1.0-alpha
+
 
 # Setup
-title:            Incio's Page
+title:            Incio's
 tagline:          'Home'
 description:      "블로그명을 아직 못 정했음.."
 url:              https://inci-o.github.io
@@ -15,6 +15,18 @@ baseurl:          ''
                   # If you want to move just the blog index pages but keep
                   # other pages at root, see the paginate_path and
                   # sidebar_blog_link below.
+version: 0.1.0-alpha
+
+# bootstrap
+sass:
+  load_paths:
+    - _sass
+    - ./node_modules/bootstrap/scss
+
+# Exclude from processing.
+exclude:
+  - node_modules
+
 github:
   repo:           https://github.com/inci-o
 

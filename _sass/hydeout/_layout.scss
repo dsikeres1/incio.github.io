@@ -13,12 +13,12 @@
       > header (primary sidebar content -- i.e. title)
         > h1 (home page only, otherwise div or span)
       > secondary nav content we may want to hide on certain pages
-    > .container
+    > .-container
       > h1 (non-home page)
       > .content
 
   Basic approach is to color in body, make sidebar background transparent,
-  and then fill in the .container or .content elements depending on how far
+  and then fill in the .-container or .content elements depending on how far
   we want the sidebar or header to stretch.
 */
 
@@ -50,8 +50,8 @@ body {
   }
 }
 
-// Container is flexbox as well -- we want content div to stretch and fill
-.container {
+// -container is flexbox as well -- we want content div to stretch and fill
+.-container {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -76,13 +76,13 @@ body {
 // Hide secondary nav content in sidebar
 // Hide lead paragraph in sidebar
 #sidebar {
-  header ~ *, header ~ nav, p.lead {
+  header ~ *, header ~ nav, header.site-title p.lead {
     display: none;
   }
 }
 
 // Make header elements blend into sidebar / background
-.container > header {
+.-container > header {
   color: $sidebar-title-color;
   background: transparent;
   margin: ($heading-spacing - $section-spacing)
@@ -177,8 +177,8 @@ body {
 
   .index #sidebar { margin-bottom: 0; }
 
-  // Make entire container background white to contrast against sidebar
-  .container {
+  // Make entire -container background white to contrast against sidebar
+  .-container {
     background: $body-bg;
     color: $body-color;
     padding: $section-spacing * 2
@@ -294,7 +294,7 @@ body {
 
 @if $layout-reverse {
   @media (min-width: $large-breakpoint) {
-    .container {
+    .-container {
       order: -1;
     }
   }

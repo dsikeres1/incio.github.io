@@ -1,21 +1,62 @@
-<div id="sidebar">
-  <header>
-    <{% if page.layout == 'index' %}h1{% else %}div{% endif %} class="site-title">
-      <a href="{{ '/' | relative_url }}">
-        {% unless page.url == '/' %}
-          <span class="back-arrow icon">{% include svg/back-arrow.svg %}</span>
-        {% endunless %}
-        {{ site.title }}
-      </a>
-    </{% if page.layout == 'index' %}h1{% else %}div{% endif %}>
+<div id="sidebar" class="-pc-header">
+    <header>
+        <{% if page.layout == 'index' %}h1{% else %}div{% endif %} class="site-title">
+        <a href="{{ '/' | relative_url }}">
+            {% unless page.url == '/' %}
+            <span class="back-arrow icon">{% include svg/back-arrow.svg %}</span>
+            {% endunless %}
+            {{ site.title }}
+        </a>
+    </
+    {% if page.layout == 'index' %}h1{% else %}div{% endif %}>
     <p class="lead">{{ site.description }}</p>
-  </header>
-  {% include sidebar-nav-links.html %}
+    </header>
+    {% include sidebar-nav-links.html %}
 
-  {% include sidebar-icon-links.html %}
+    {% include sidebar-icon-links.html %}
 
-  {% if site.version %}
-  <p><span class="site-version" style="font-size: 0.8rem;">Currently v{{ site.version }}</span></p>
-  {% endif %}
-  {% include copyright.html %}
+    {% if site.version %}
+    <p><span class="site-version" style="font-size: 0.8rem;">Currently v{{ site.version }}</span></p>
+    {% endif %}
+    {% include copyright.html %}
 </div>
+<div class="-mobile-header">
+    <header>
+        <nav class="navbar navbar-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div style="margin: auto; padding-right: 56px;">
+              <span class="" style="color:white; font-size: 1.1rem;">
+              {% if page.title == "Home" %}
+      {{ site.title }}{% if site.tagline %} - {{ site.tagline }}{% endif %}
+    {% else %}
+      {{ page.title }} - {{ site.title }}
+    {% endif %}
+              </span>
+            </div>
+        </nav>
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="">
+                <a href="{{ '/' | relative_url }}">
+                    {% unless page.url == '/' %}
+                    <span class="back-arrow icon">{% include svg/back-arrow.svg %}</span>
+                    {% endunless %}
+                    {{ site.title }}
+                </a>
+                <p class="lead">{{ site.description }}</p>
+                {% include sidebar-nav-links.html %}
+
+                {% include sidebar-icon-links.html %}
+
+                {% if site.version %}
+                <p><span class="site-version" style="font-size: 0.8rem;">Currently v{{ site.version }}</span></p>
+                {% endif %}
+                {% include copyright.html %}
+            </div>
+        </div>
+    </header>
+</div>
+
