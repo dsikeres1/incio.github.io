@@ -2,9 +2,6 @@
     <header>
         <{% if page.layout == 'index' %}h1{% else %}div{% endif %} class="site-title">
         <a href="{{ '/' | relative_url }}">
-            {% unless page.url == '/' %}
-            <span class="back-arrow icon">{% include svg/back-arrow.svg %}</span>
-            {% endunless %}
             {{ site.title }}
         </a>
     </
@@ -39,18 +36,11 @@
             </div>
         </nav>
         <div class="collapse" id="navbarToggleExternalContent">
-            <div class="">
-                <a href="{{ '/' | relative_url }}">
-                    {% unless page.url == '/' %}
-                    <span class="back-arrow icon">{% include svg/back-arrow.svg %}</span>
-                    {% endunless %}
-                    {{ site.title }}
-                </a>
-                <p class="lead">{{ site.description }}</p>
+            <div>
+                <div class="-mobile-header-sidebar-nav-links">
                 {% include sidebar-nav-links.html %}
-
+                </div>
                 {% include sidebar-icon-links.html %}
-
                 {% if site.version %}
                 <p><span class="site-version" style="font-size: 0.8rem;">Currently v{{ site.version }}</span></p>
                 {% endif %}
