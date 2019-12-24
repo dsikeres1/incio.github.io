@@ -27,11 +27,13 @@
             </button>
             <div style="margin: auto; padding-right: 56px;">
               <span class="" style="color:white; font-size: 1.1rem;">
-              {% if page.title == "Home" %}
-      {{ site.title }}{% if site.tagline %} - {{ site.tagline }}{% endif %}
-    {% else %}
-      {{ page.title }} - {{ site.title }}
-    {% endif %}
+                  <!-- -custom comments -->
+<!--              {% if page.title == "Home" %}-->
+<!--      {{ site.title }}{% if site.tagline %} - {{ site.tagline }}{% endif %}-->
+<!--    {% else %}-->
+<!--      {{ page.title }} - {{ site.title }}-->
+<!--    {% endif %}-->
+                  <a href="{{ "/" | relative_url }}">{{ site.title }}</a>
               </span>
             </div>
         </nav>

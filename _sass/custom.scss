@@ -5,9 +5,25 @@
   .-pc-header {
     display: block;
   }
+
+  .-mobile {
+    display: none;
+  }
+
+  .-pc {
+    display: block;
+  }
 }
 
 @media (max-width: 49rem - 0.01rem) {
+  .-mobile {
+    display: block;
+  }
+
+  .-pc {
+    display: none;
+  }
+
   .-pc-header{
     display:none;
   }
@@ -19,6 +35,7 @@
     right: 0;
     background-color: #303030;
     text-align: center;
+    z-index: 1;
     //
     //.-mobile-header .site-title {
     //  font-family: "Abril Fatface", serif;
@@ -30,7 +47,7 @@
   }
 
   .content {
-    padding-top: 64px;
+    padding-top: 90px;
   }
 
   .page-title {
