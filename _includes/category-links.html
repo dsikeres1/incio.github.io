@@ -2,37 +2,75 @@
 Dynamically generate list of links to all category pages
 {% endcomment %}
 {% assign pages_list = site.pages|sort:"sidebar_sort_order" %}
-{% for node in pages_list %}
-{% if node.title != null %}
-{% if node.layout == "category" %}
-<a class="category-link {% if page.url == node.url %} active{% endif %}"
-   href="{{ node.url | relative_url }}">{{ node.title }}</a>
-{% endif %}
-{% endif %}
-{% endfor %}
-<div class="accordion" id="-sidebar-accordion-category">
+{% assign current_page = null %}
+<!-- -custom-comments -->
+<!--{% for node in pages_list %}-->
+<!--{% if node.title != null %}-->
+<!--{% if node.layout == "category" %}-->
+<!--<a class="category-link {% if page.url == node.url %} active{% endif %}"-->
+<!--   href="{{ node.url | relative_url }}">{{ node.title }}</a>-->
+<!--{% endif %}-->
+<!--{% endif %}-->
+<!--{% endfor %}-->
 
-    {% for node in pages_list %}
-    {% if node.title != null %}
-    {% if node.layout == "category"  %}
-
-    <div class="card">
-        <div class="card-header" id="-sidebar-accordion-heading-dev">
-            <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#-sidebar-collapse-dev" aria-expanded="true" aria-controls="-sidebar-collapse-dev">
-                    {{node.category}}
-                </button>
-            </h2>
-        </div>
-
-        <div id="-sidebar-collapse-dev" class="collapse" aria-labelledby="-sidebar-accordion-heading-dev" data-parent="#-sidebar-accordion-category">
-            <div class="card-body">
-                <a href="{{ node.url | relative_url }}" style="color: red;">{{node.category}} - {{ node.title }}</a>
+<div id="-sidebar-accordion-dev">
+    <div>
+        <a class="category-link -sidebar-category-link {% if page.category == 'dev' %}active {% endif %}"
+           id="-sidebar-accordion-heading-dev">
+            <div data-toggle="collapse" data-target="#-sidebar-collapse-dev"
+                 aria-expanded="{% if page.category == 'dev' %}true{% else %}false{% endif %}"
+                 aria-controls="-sidebar-collapse-dev">
+                Dev <i class="material-icons">
+                {% if page.category == 'dev' %}expand_more{% else %}expand_less{% endif %}
+            </i>
             </div>
+        </a>
+        {% for node in pages_list %}
+        {% if node.category == 'dev' %}
+        {% assign current_page = node %}
+        <!-- TODO: div에 href 달아서 링크 영역 확대 시키기 -->
+        <div id="-sidebar-collapse-dev" class="-sidebar-collapse collapse {% if page.category == 'dev' %}show{% endif %}"
+             aria-labelledby="-sidebar-accordion-heading-dev"
+             data-parent="#-sidebar-accordion-dev">
+            <a class="category-link {% if page.url == node.url %}active{% endif %}"
+               href="{{ node.url | relative_url }}"> <i
+                    class="material-icons">
+                chevron_right
+            </i>{{ node.title }}</a>
         </div>
+        {% endif %}
+        {% endfor %}
     </div>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
 </div>
+
+<div id="-sidebar-accordion-markup">
+    <div>
+        <a class="category-link -sidebar-category-link {% if page.category == 'markup' %}active {% endif %}"
+           id="-sidebar-accordion-heading-markup">
+            <div data-toggle="collapse" data-target="#-sidebar-collapse-markup"
+                 aria-expanded="{% if page.category == 'markup' %}true{% else %}false{% endif %}"
+                 aria-controls="-sidebar-collapse-markup">
+                MarkUp <i class="material-icons">
+                {% if page.category == 'markup' %}expand_more{% else %}expand_less{% endif %}
+            </i>
+            </div>
+        </a>
+        {% for node in pages_list %}
+        {% if node.category == 'markup' %}
+        {% assign current_page = node %}
+        <!-- TODO: div에 href 달아서 링크 영역 확대 시키기 -->
+        <div id="-sidebar-collapse-markup" class="-sidebar-collapse collapse {% if page.category == 'markup' %}show{% endif %}"
+             aria-labelledby="-sidebar-accordion-heading-markup"
+             data-parent="#-sidebar-accordion-markup">
+            <a class="category-link {% if page.url == node.url %}active{% endif %}"
+               href="{{ node.url | relative_url }}"> <i
+                    class="material-icons">
+                chevron_right
+            </i>{{ node.title }}</a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
 
