@@ -5,17 +5,32 @@ layout: page
 {% unless page.content == '' %}
   {{ content }}
 {% endunless %}
-
-<ul class="posts-list">
-  {% assign category = page.category | default: page.title %}
+{% assign category = page.category | default: page.title %}
   {% for post in site.categories[category] %}
-    <li>
-      <h3>
-        <a href="{{ post.url | relative_url }}">
-          {{ post.title }}
-          <small>{{ post.date | date_to_string }}</small>
-        </a>
-      </h3>
-    </li>
+      {% if forloop.first == true %}
+</div>
+      <div class="content">
+        <h1 class="post-title -mobile">{{ post.title }}</h1>
+        {% include post-meta.html post=page %}
+
+        <div class="post-body">
+          {{ post.content }}
+          {% include post-tags.html post=post %}
+        </div>
+        {% include comments.html %}
+        {% include related_posts.html %}
+      </div>
+<div class="content">
+<ul class="posts-list">
+  {% else %}
+  <li>
+    <h3>
+      <a href="{{ post.url | relative_url }}">
+        {{ post.title }}
+        <small>{{ post.date | date_to_string }}</small>
+      </a>
+    </h3>
+  </li>
+      {% endif %}
   {% endfor %}
 </ul>

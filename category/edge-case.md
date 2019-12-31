@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Edge Case
-category: dev
+group: Dev
 ---
 
 Sample category page. You need to create a page for each category.

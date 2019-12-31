@@ -1,4 +1,4 @@
-$('.-sidebar-category-link').on('click', function () {
+$('.-sidebar-group-link').on('click', function () {
     var $this = $(this);
 
     if ($this.hasClass('active') === true) {
