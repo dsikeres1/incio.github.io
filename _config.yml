@@ -53,4 +53,4 @@ comments: true
   provider: disqus
 
 disqus:
-  shortname: incio.disqus.com
+  shortname: incio
