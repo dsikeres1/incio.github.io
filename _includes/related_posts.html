@@ -1,16 +1,16 @@
 <section class="related">
-  <h2>Related Posts</h2>
+  <h2>[{{page.categories}}] Posts</h2>
   <ul class="posts-list">
     <!-- TODO: 아래에 뜨는 관계 된 post 정의 고민해보자 -->
     {% for post in site.related_posts %}
       {% if page.categories == post.categories %}
         <li>
-          <h3>
+          <h4>
             <a href="{{ post.url | relative_url }}">
               {{ post.title }}
               <small>{{ post.date | date_to_string }}</small>
             </a>
-          </h3>
+          </h4>
         </li>
       {% endif %}
     {% endfor %}
