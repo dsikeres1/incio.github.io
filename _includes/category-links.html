@@ -1,52 +1,49 @@
 {% comment %}
-Dynamically generate list of links to all category pages
+    Dynamically generate list of links to all category pages
 {% endcomment %}
 {% assign pages_list = site.pages|sort:"sidebar_sort_order" %}
 {% assign pages_groups = site.pages | map: "group" | uniq %}
 {% assign current_page = null %}
 <!-- -custom-comments -->
 <!--{% for node in pages_list %}-->
-<!--{% if node.title != null %}-->
-<!--{% if node.layout == "category" %}-->
-<!--<a class="category-link {% if page.url == node.url %} active{% endif %}"-->
-<!--   href="{{ node.url | relative_url }}">{{ node.title }}</a>-->
-<!--{% endif %}-->
-<!--{% endif %}-->
+        <!--{% if node.title != null %}-->
+        <!--{% if node.layout == "category" %}-->
+    <!--<a class="category-link {% if page.url == node.url %} active{% endif %}"-->
+    <!--   href="{{ node.url | relative_url }}">{{ node.title }}</a>-->
+    <!--{% endif %}-->
+    <!--{% endif %}-->
 <!--{% endfor %}-->
 
 {% for group in pages_groups %}
-{% if group != null %}
-<div id="-sidebar-accordion-{{ group }}">
-    <div>
-        <a class="category-link -sidebar-group-link {% if page.group == group && if page.url != '/' %}active {% endif %}"
-           id="-sidebar-accordion-heading-{{ group }}">
-            <div data-toggle="collapse" data-target="#-sidebar-collapse-{{ group }}"
-                 aria-expanded="{% if page.group == '{{ group }}' %}true{% else %}false{% endif %}"
-                 aria-controls="-sidebar-collapse-{{ group }}">
-                {{ group }} <i class="material-icons">
-                {% if page.group == group && if page.url != '/' %}expand_more{% else %}expand_less{% endif %}
-            </i>
+    {% if group != null %}
+        <div id="-sidebar-accordion-{{ group }}">
+            <div>
+                <a class="category-link -sidebar-group-link {% if page.group == group && if page.url != '/' %}active {% endif %}"
+                   id="-sidebar-accordion-heading-{{ group }}">
+                    <div data-toggle="collapse" data-target="#-sidebar-collapse-{{ group }}"
+                         aria-expanded="{% if page.group == '{{ group }}' %}true{% else %}false{% endif %}"
+                         aria-controls="-sidebar-collapse-{{ group }}">
+                        {{ group }} <i class="material-icons">
+                            {% if page.group == group && if page.url != '/' %}expand_more{% else %}expand_less{% endif %}
+                        </i>
+                    </div>
+                </a>
+                {% for node in pages_list %}
+                    {% if node.group == group %}
+                        <!-- TODO: div에 href 달아서 링크 영역 확대 시키기 -->
+                        <div id="-sidebar-collapse-{{ group }}"
+                             class="-sidebar-collapse collapse {% if page.group == group && if page.url != '/' %}show{% endif %}"
+                             aria-labelledby="-sidebar-accordion-heading-{{ group }}"
+                             data-parent="#-sidebar-accordion-{{ group }}">
+                            <a class="category-link {% if page.url == node.url %}active{% endif %}"
+                               href="{{ node.url | relative_url }}">
+                                <i class="material-icons">chevron_right</i>{{ node.title }}</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
-        </a>
-        {% for node in pages_list %}
-        {% if node.group == group %}
-        <!-- TODO: div에 href 달아서 링크 영역 확대 시키기 -->
-        <div id="-sidebar-collapse-{{ group }}"
-             class="-sidebar-collapse collapse {% if page.group == group && if page.url != '/' %}show{% endif %}"
-             aria-labelledby="-sidebar-accordion-heading-{{ group }}"
-             data-parent="#-sidebar-accordion-{{ group }}">
-            <a class="category-link {% if page.url == node.url %}active{% endif %}"
-               href="{{ node.url | relative_url }}"> <i
-                    class="material-icons">
-                chevron_right
-            </i>{{ node.title }}</a>
         </div>
-        {% endif %}
-        {% endfor %}
-    </div>
-</div>
-
-{% endif %}
+    {% endif %}
 {% endfor %}
 
 <!--<div id="-sidebar-accordion-dev">-->

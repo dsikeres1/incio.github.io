@@ -4,9 +4,9 @@ layout: page
 <!-- TODO: 더 깔끔하게 바꾸자 -->
 {% assign category = page.category | default: page.title %}
 {% for post in site.categories[category] %}
-{% if forloop.first == true %}
-<script>
-    window.location.href = '{{ post.url | relative_url }}';
-</script>
-{% endif %}
+    {% if forloop.first == true %}
+        <script>
+            window.location.href = '{{ post.url | relative_url }}';
+        </script>
+    {% endif %}
 {% endfor %}

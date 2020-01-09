@@ -1,19 +1,26 @@
 <div id="sidebar" class="-pc-header">
     <header>
-        <{% if page.layout == 'index' %}h1{% else %}div{% endif %} class="site-title">
-        <a href="{{ '/' | relative_url }}">
-            {{ site.title }}
-        </a>
-    </
-    {% if page.layout == 'index' %}h1{% else %}div{% endif %}>
-    <p class="lead">{{ site.description }}</p>
+        {% if page.layout == 'index' %}
+            <h1 class="site-title">
+                <a href="{{ '/' | relative_url }}">
+                    {{ site.title }}
+                </a>
+            </h1>
+        {% else %}
+            <div class="site-title">
+                <a href="{{ '/' | relative_url }}">
+                    {{ site.title }}
+                </a>
+            </div>
+        {% endif %}
+        <p class="lead">{{ site.description }}</p>
     </header>
     {% include sidebar-nav-links.html %}
-
     {% include sidebar-icon-links.html %}
-
     {% if site.version %}
-    <p><span class="site-version" style="font-size: 0.8rem;">Currently v{{ site.version }}</span></p>
+        <p>
+            <span class="site-version" style="font-size: 0.8rem;">Currently v{{ site.version }}</span>
+        </p>
     {% endif %}
     {% include copyright.html %}
 </div>
@@ -28,11 +35,11 @@
             <div style="margin: auto; padding-right: 56px;">
               <span class="" style="color:white; font-size: 1.1rem;">
                   <!-- -custom comments -->
-<!--              {% if page.title == "Home" %}-->
-<!--      {{ site.title }}{% if site.tagline %} - {{ site.tagline }}{% endif %}-->
-<!--    {% else %}-->
-<!--      {{ page.title }} - {{ site.title }}-->
-<!--    {% endif %}-->
+                  <!--              {% if page.title == "Home" %}-->
+                  <!--      {{ site.title }}{% if site.tagline %} - {{ site.tagline }}{% endif %}-->
+                  <!--    {% else %}-->
+                  <!--      {{ page.title }} - {{ site.title }}-->
+                  <!--    {% endif %}-->
                   <a href="{{ "/" | relative_url }}">{{ site.title }}</a>
               </span>
             </div>
@@ -40,12 +47,14 @@
         <div class="collapse" id="navbarToggleExternalContent">
             <div>
                 <div class="-mobile-header-sidebar-nav-links">
-                {% include sidebar-nav-links.html %}
+                    {% include sidebar-nav-links.html %}
                 </div>
                 {% include sidebar-icon-links.html %}
+
                 {% if site.version %}
-                <p><span class="site-version" style="font-size: 0.8rem;">Currently v{{ site.version }}</span></p>
+                    <p><span class="site-version" style="font-size: 0.8rem;">Currently v{{ site.version }}</span></p>
                 {% endif %}
+
                 {% include copyright.html %}
             </div>
         </div>
