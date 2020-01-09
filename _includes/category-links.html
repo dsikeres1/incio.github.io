@@ -18,13 +18,13 @@
     {% if group != null %}
         <div id="-sidebar-accordion-{{ group }}">
             <div>
-                <a class="category-link -sidebar-group-link {% if page.group == group && if page.url != '/' %}active {% endif %}"
+                <a class="category-link -sidebar-group-link {% if page.group == group and page.url != '/' %}active {% endif %}"
                    id="-sidebar-accordion-heading-{{ group }}">
                     <div data-toggle="collapse" data-target="#-sidebar-collapse-{{ group }}"
                          aria-expanded="{% if page.group == '{{ group }}' %}true{% else %}false{% endif %}"
                          aria-controls="-sidebar-collapse-{{ group }}">
                         {{ group }} <i class="material-icons">
-                            {% if page.group == group && if page.url != '/' %}expand_more{% else %}expand_less{% endif %}
+                            {% if page.group == group and page.url != '/' %}expand_more{% else %}expand_less{% endif %}
                         </i>
                     </div>
                 </a>
@@ -32,7 +32,7 @@
                     {% if node.group == group %}
                         <!-- TODO: div에 href 달아서 링크 영역 확대 시키기 -->
                         <div id="-sidebar-collapse-{{ group }}"
-                             class="-sidebar-collapse collapse {% if page.group == group && if page.url != '/' %}show{% endif %}"
+                             class="-sidebar-collapse collapse {% if page.group == group and page.url != '/' %}show{% endif %}"
                              aria-labelledby="-sidebar-accordion-heading-{{ group }}"
                              data-parent="#-sidebar-accordion-{{ group }}">
                             <a class="category-link {% if page.url == node.url %}active{% endif %}"
@@ -45,64 +45,3 @@
         </div>
     {% endif %}
 {% endfor %}
-
-<!--<div id="-sidebar-accordion-dev">-->
-<!--    <div>-->
-<!--        <a class="category-link -sidebar-group-link {% if page.group == 'dev' %}active {% endif %}"-->
-<!--           id="-sidebar-accordion-heading-dev">-->
-<!--            <div data-toggle="collapse" data-target="#-sidebar-collapse-dev"-->
-<!--                 aria-expanded="{% if page.group == 'dev' %}true{% else %}false{% endif %}"-->
-<!--                 aria-controls="-sidebar-collapse-dev">-->
-<!--                Dev <i class="material-icons">-->
-<!--                {% if page.group == 'dev' %}expand_more{% else %}expand_less{% endif %}-->
-<!--            </i>-->
-<!--            </div>-->
-<!--        </a>-->
-<!--        {% for node in pages_list %}-->
-<!--        {% if node.group == 'dev' %}-->
-<!--        {% assign current_page = node %}-->
-<!--        &lt;!&ndash; TODO: div에 href 달아서 링크 영역 확대 시키기 &ndash;&gt;-->
-<!--        <div id="-sidebar-collapse-dev" class="-sidebar-collapse collapse {% if page.group == 'dev' %}show{% endif %}"-->
-<!--             aria-labelledby="-sidebar-accordion-heading-dev"-->
-<!--             data-parent="#-sidebar-accordion-dev">-->
-<!--            <a class="category-link {% if page.url == node.url %}active{% endif %}"-->
-<!--               href="{{ node.url | relative_url }}"> <i-->
-<!--                    class="material-icons">-->
-<!--                chevron_right-->
-<!--            </i>{{ node.title }}</a>-->
-<!--        </div>-->
-<!--        {% endif %}-->
-<!--        {% endfor %}-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--<div id="-sidebar-accordion-markup">-->
-<!--    <div>-->
-<!--        <a class="category-link -sidebar-group-link {% if page.group == 'markup' %}active {% endif %}"-->
-<!--           id="-sidebar-accordion-heading-markup">-->
-<!--            <div data-toggle="collapse" data-target="#-sidebar-collapse-markup"-->
-<!--                 aria-expanded="{% if page.group == 'markup' %}true{% else %}false{% endif %}"-->
-<!--                 aria-controls="-sidebar-collapse-markup">-->
-<!--                MarkUp <i class="material-icons">-->
-<!--                {% if page.group == 'markup' %}expand_more{% else %}expand_less{% endif %}-->
-<!--            </i>-->
-<!--            </div>-->
-<!--        </a>-->
-<!--        {% for node in pages_list %}-->
-<!--        {% if node.group == 'markup' %}-->
-<!--        {% assign current_page = node %}-->
-<!--        &lt;!&ndash; TODO: div에 href 달아서 링크 영역 확대 시키기 &ndash;&gt;-->
-<!--        <div id="-sidebar-collapse-markup" class="-sidebar-collapse collapse {% if page.group == 'markup' %}show{% endif %}"-->
-<!--             aria-labelledby="-sidebar-accordion-heading-markup"-->
-<!--             data-parent="#-sidebar-accordion-markup">-->
-<!--            <a class="category-link {% if page.url == node.url %}active{% endif %}"-->
-<!--               href="{{ node.url | relative_url }}"> <i-->
-<!--                    class="material-icons">-->
-<!--                chevron_right-->
-<!--            </i>{{ node.title }}</a>-->
-<!--        </div>-->
-<!--        {% endif %}-->
-<!--        {% endfor %}-->
-<!--    </div>-->
-<!--</div>-->
-
