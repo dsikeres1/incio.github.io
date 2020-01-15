@@ -2,6 +2,8 @@
 //
 // Update the foundational and global aspects of the page.
 
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Nanum+Myeongjo:400,700|Nanum+Gothic+Coding:700');
+
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -15,10 +17,9 @@ body {
 }
 
 html {
-  font-family: $root-font-family;
-  font-size: $root-font-size;
-  line-height: $root-line-height;
-
+  //font-family: $root-font-family;
+  //font-size: $root-font-size;
+  //line-height: $root-line-height;
   @media (min-width: $large-breakpoint) {
     font-size: $large-font-size;
   }
@@ -27,6 +28,9 @@ html {
 body {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+  font-size: $root-font-size;
+  line-height: $root-line-height;
+  font-family: $root-font-family;
 }
 
 main, article, section { display: block; }
