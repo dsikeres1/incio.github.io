@@ -18,7 +18,7 @@
     {% if group != null %}
         <div id="-sidebar-accordion-{{ group }}">
             <div>
-                <a class="category-link -sidebar-group-link {% if page.group == group and page.url != '/' %}active {% endif %}"
+                <a class="category-link -hand -sidebar-group-link {% if page.group == group and page.url != '/' %}active {% endif %}"
                    id="-sidebar-accordion-heading-{{ group }}">
                     <div data-toggle="collapse" data-target="#-sidebar-collapse-{{ group }}"
                          aria-expanded="{% if page.group == '{{ group }}' %}true{% else %}false{% endif %}"
