@@ -10,6 +10,7 @@ layout: page
 <ul class="posts-list">
     {% assign category = page.category | default: page.title %}
     {% for post in site.categories[category] %}
+        {% if post.released == False %}
         <li>
             <div class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
                 <h4>
@@ -19,5 +20,6 @@ layout: page
             </div>
             <hr>
         </li>
+        {% endif %}
     {% endfor %}
 </ul>
