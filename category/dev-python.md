@@ -2,6 +2,7 @@
 layout: category
 title: Python
 group: Dev
+sidebar_sort_order: 2
 ---
 
 <p>html 태그 테스트</p>
