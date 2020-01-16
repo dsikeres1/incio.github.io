@@ -67,3 +67,7 @@ Gemfile.lock
 _config.dev.yml
 .vscode
 *.gem
+/_sass/custom/custom_full.css
+/_sass/custom/custom_full.css.map
+/_sass/custom/custom_media.css
+/_sass/custom/custom_media.css.map
