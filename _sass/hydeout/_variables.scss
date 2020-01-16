@@ -42,7 +42,8 @@ $default-box-shadow: $box-shadow-size
                      rgba(0, 0, 0, $box-shadow-opacity);
 
 $code-font-family: 'Nanum Gothic Coding', Menlo, Monaco, "Courier New", monospace !default;
-$code-color: #bf616a !default;
+//$code-color: #bf616a !default;
+$code-color: #007bff;
 
 // Hyde theming
 $sidebar-bg-color: #202020 !default;
