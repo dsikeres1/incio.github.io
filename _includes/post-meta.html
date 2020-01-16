@@ -1,4 +1,7 @@
-{% if page.url != '/' %}<div class="post-meta">{% endif %}
+<!-- TODO: 일단은 .html로 구분하는데 추후 바꾸자 -->
+{% assign check_html = page.url | split:'.' %}
+
+{% if check_html.last == "html" %}<div class="post-meta">{% endif %}
     <span class="post-date">{{ include.post.date | date: "%Y-%m-%d" }}</span>
     <span class="post-categories">
     {% for category in include.post.categories %}
@@ -26,5 +29,5 @@
         {% endif %}
     {% endfor %}
   </span>
-    {% if page.url != '/' %}</div>{% endif %}
+    {% if check_html.last == "html" %}</div>{% endif %}
 
