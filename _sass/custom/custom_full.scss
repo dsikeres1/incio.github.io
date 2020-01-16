@@ -1,6 +1,23 @@
-.-sidebar-group-link {
-  cursor : pointer;
-}
 .material-icons {
   vertical-align: middle;
+}
+
+.-hand {
+  cursor: pointer;
+}
+
+.-bold-hr {
+  border-width: 5px;
+}
+
+.-list-box {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px lightgrey;
+  padding: 25px;
+  background-color: #F4F4F4;
+}
+
+.-list-box h4 {
+  margin: 0;
+  color: dodgerblue;
 }

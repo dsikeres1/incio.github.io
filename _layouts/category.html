@@ -1,12 +1,23 @@
 ---
 layout: page
 ---
-<!-- TODO: 더 깔끔하게 바꾸자 -->
-{% assign category = page.category | default: page.title %}
-{% for post in site.categories[category] %}
-    {% if forloop.first == true %}
-        <script>
-            window.location.href = '{{ post.url | relative_url }}';
-        </script>
-    {% endif %}
-{% endfor %}
+
+<!--{% unless page.content == '' %}
+    {{ content }}
+{% endunless %}-->
+
+<hr class="-bold-hr">
+<ul class="posts-list">
+    {% assign category = page.category | default: page.title %}
+    {% for post in site.categories[category] %}
+        <li>
+            <div class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
+                <h4>
+                    {{ post.title }}
+                </h4>
+                <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+            </div>
+            <hr>
+        </li>
+    {% endfor %}
+</ul>
