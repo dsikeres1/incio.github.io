@@ -1,0 +1,14 @@
+{% if include.post.sources %}
+    <div style="font-size: 0.7em; margin-top:10px; margin-left: 3px; color: grey;">
+        <i class="material-icons" style="font-size: 1rem;">help</i> 출처
+        <div class="-post-sources" style="margin-left: 20px;">
+            {% for source in include.post.sources %}
+                <div style="margin-top: 5px;">- {{ source | split: "," | first }} .
+                    <a href="{{ source | split: "," | last }}" target="_blank">
+                        {{ source | split: "," | last }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
