@@ -32,3 +32,31 @@
   color: #999;
   white-space: nowrap;
 }
+
+// 포스팅 시 사용하는 박스 (자동 생성 code 형식은 스크롤이 생겨서 이를 없애기 위해)
+.-box-in-post {
+  padding: 2rem;
+  margin-bottom: 0;
+  font-size: .8rem;
+  line-height: 1.4;
+  background-color: #f9f9f9;
+  border-radius: .5rem;
+  max-width: 100%;
+  margin-top:0;
+  font-family: $code-font-family;
+  display: block;
+  box-sizing: border-box;
+}
+
+.-box-in-post ul {
+  list-style-type: none;
+  padding-left: 2rem;
+  margin-top: .5rem;
+}
+.-box-in-post ul > li:before {
+  content: "- ";
+  margin-left: -1.1em;
+}
+.-box-in-post ul:last-child {
+  margin-bottom: 0;
+}
