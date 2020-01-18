@@ -1,7 +1,8 @@
 <!-- TODO: 일단은 .html로 구분하는데 추후 바꾸자 -->
 {% assign check_html = page.url | split:'.' %}
 
-{% if check_html.last == "html" %}<div class="post-meta">{% endif %}
+{% if check_html.last == "html" %}
+<div class="post-meta">{% endif %}
     <span class="post-date">{{ include.post.date | date: "%Y-%m-%d" }}</span>
     <span class="post-categories">
     {% for category in include.post.categories %}
@@ -20,12 +21,16 @@
             {% endif %}
         {% endfor %}
 
-        {% if category_page %}
-            <a href="{{ category_page.url | relative_url }}">
+        {% if check_html.last == "html" %}
+            {% if category_page %}
+                <a href="{{ category_page.url | relative_url }}">
           {{ category_page.title | default: category_page.category }}
         </a>
+            {% else %}
+                {{ category }}
+            {% endif %}
         {% else %}
-            {{ category }}
+            {{ category_page.title | default: category_page.category }}
         {% endif %}
     {% endfor %}
   </span>
