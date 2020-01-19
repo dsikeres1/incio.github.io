@@ -12,9 +12,13 @@ layout: default
 
     <div class="post-body">
         {{ content }}
+
+        <hr class="-bold-hr">
+
         {% include post-tags.html post=page %}
         {% include post-sources.html post=page %}
     </div>
+
     {% include comments.html %}
     {% include related_posts.html %}
 </div>
