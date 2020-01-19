@@ -1,18 +1,52 @@
+{% assign pre_post_cnt = 0 %}
+{% assign next_post_cnt = 0 %}
+
 <section class="related">
-    <h2>[{{ page.categories }}] Posts</h2>
     <ul class="posts-list">
         <!-- TODO: 아래에 뜨는 관계 된 post 정의 고민해보자 -->
-        {% for post in site.related_posts %}
-            {% if page.categories == post.categories %}
-                <li>
-                    <h4>
-                        <a href="{{ post.url | relative_url }}">
-                            {{ post.title }}
-                            <small>{{ post.date | date: "%Y-%m-%d" }}</small>
-                        </a>
-                    </h4>
-                </li>
+        <h3>[{{ page.categories }}] 이전 포스트</h3>
+        {% for post in site.posts %}
+            {% if post.title == page.title %}
+                {% assign pre_index = forloop.index %}
             {% endif %}
         {% endfor %}
+        {% for post in site.posts %}
+            {% if forloop.index > pre_index and page.categories == post.categories and pre_post_cnt < 1 %}
+                <li>
+                    <div class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
+                        <h4>
+                            {{ post.title }}
+                        </h4>
+                        <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+                    </div>
+                    <hr>
+                </li>
+                {% assign pre_post_cnt = pre_post_cnt | plus: 1 %}
+            {% endif %}
+        {% endfor %}
+
+        <h3>[{{ page.categories }}] 다음 포스트</h3>
+        {% for post in site.posts reversed %}
+            {% if post.title == page.title %}
+                {% assign post_index = forloop.index %}
+            {% endif %}
+        {% endfor %}
+
+        {% for post in site.posts reversed %}
+            {% if forloop.index > post_index and page.categories == post.categories and next_post_cnt < 2 %}
+                <li>
+                    <div class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
+                        <h4>
+                            {{ post.title }}
+                        </h4>
+                        <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+                    </div>
+                    <hr>
+                </li>
+                {% assign next_post_cnt = next_post_cnt | plus: 1 %}
+            {% endif %}
+        {% endfor %}
+
+
     </ul>
 </section>
