@@ -23,3 +23,9 @@ $('pre > code').each(function() {
     }
     this.innerHTML = ol;
 });
+
+SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '/search.json'
+});
