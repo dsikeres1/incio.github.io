@@ -7,20 +7,18 @@ layout: default
 
     {{ content }}
     <ul class="posts-list">
-    {% for post in paginator.posts %}
-        {% if post.released == False %}
-        <li>
-            <div class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
-                <h4>
-                    {{ post.title }}
-                </h4>
-                <small>{% include post-meta.html post=post %}</small>
-            </div>
-            <hr class="mt-3 mb-3">
-        </li>
+        {% for post in paginator.posts %}
+            {% if post.released == False %}
+                <li class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
+                    <h4>
+                        {{ post.title }}
+                    </h4>
+                    <small>{% include post-meta.html post=post %}</small>
+                </li>
+                <hr class="mt-3 mb-3">
 
-        {% endif %}
-    {% endfor %}
+            {% endif %}
+        {% endfor %}
     </ul>
     {% include pagination-older.html %}
 </div>
