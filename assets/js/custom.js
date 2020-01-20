@@ -28,7 +28,7 @@ SimpleJekyllSearch({
     // TODO: 어떻게 사용하는게 나은것인지는 고민중
     // searchInput: document.getElementById('search-input'),
     // resultsContainer: document.getElementById('results-container'),
-    searchInput: $('#search-input')[0],
-    resultsContainer: $('#results-container')[0],
+    searchInput: $('#-search-modal-input')[0],
+    resultsContainer: $('#-search-modal-results')[0],
     json: '/search.json'
 });
