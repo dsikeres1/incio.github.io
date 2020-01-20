@@ -25,7 +25,10 @@ $('pre > code').each(function() {
 });
 
 SimpleJekyllSearch({
-    searchInput: document.getElementById('search-input'),
-    resultsContainer: document.getElementById('results-container'),
+    // TODO: 어떻게 사용하는게 나은것인지는 고민중
+    // searchInput: document.getElementById('search-input'),
+    // resultsContainer: document.getElementById('results-container'),
+    searchInput: $('#search-input')[0],
+    resultsContainer: $('#results-container')[0],
     json: '/search.json'
 });
