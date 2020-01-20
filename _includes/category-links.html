@@ -30,6 +30,7 @@
                 </a>
                 {% for node in pages_list %}
                     {% if node.group == group %}
+                        {% assign categories_cnt = site.categories[node.title] %}
                         <!-- TODO: div에 href 달아서 링크 영역 확대 시키기 -->
                         <div id="-sidebar-collapse-{{ group }}"
                              class="-sidebar-collapse collapse {% if page.group == group and page.url != '/' %}show{% endif %}"
@@ -37,7 +38,9 @@
                              data-parent="#-sidebar-accordion-{{ group }}">
                             <a class="category-link {% if page.url == node.url %}active{% endif %}"
                                href="{{ node.url | relative_url }}">
-                                <i class="material-icons">chevron_right</i>{{ node.title }}</a>
+                                <i class="material-icons">chevron_right</i>{{ node.title }}
+                                <small>({{ categories_cnt | size }})</small>
+                            </a>
                         </div>
                     {% endif %}
                 {% endfor %}
