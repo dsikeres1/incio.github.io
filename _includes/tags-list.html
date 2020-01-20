@@ -6,36 +6,33 @@
 <!-- tag_words: {{ tag_words }} -->
 
 <div id="tags-page">
-  <div class="tags-list">
-    {% for tag_pair in tag_words %}
-    {% assign tag = tag_pair | split:'|' | last %}
-    <a href="#{{ tag | slugify }}" class="tag-link">
-      <span class="tag-name">{{ tag }}</span>
-      <span class="tag-count">{{ site.tags[tag] | size }}</span>
-    </a>
-    {% endfor %}
-  </div>
-
-  <hr/>
-
-  <div class="posts-by-tag">
-    {% for tag_pair in tag_words %}
-    {% assign tag = tag_pair | split:'|' | last %}
-    <div id="{{ tag | slugify }}" class="posts-for-tag">
-      <h2>{{ tag }}</h2>
-      <ul class="posts-list">
-        {% for post in site.tags[tag] %}
-          <li>
-            <h3>
-              <a href="{{ post.url | relative_url }}">
-                {{ post.title }}
-                <small>{{ post.date | date: "%Y-%m-%d" }}</small>
-              </a>
-            </h3>
-          </li>
+    <div class="tags-list">
+        {% for tag_pair in tag_words %}
+            {% assign tag = tag_pair | split:'|' | last %}
+            <a href="#{{ tag | slugify }}" class="tag-link">
+                <span class="tag-name">{{ tag }}</span>
+                <span class="tag-count">{{ site.tags[tag] | size }}</span>
+            </a>
         {% endfor %}
-      </ul>
     </div>
-    {% endfor %}
-  </div>
+
+    <hr class="-bold-hr">
+
+    <div class="posts-by-tag">
+        {% for tag_pair in tag_words %}
+            {% assign tag = tag_pair | split:'|' | last %}
+            <div id="{{ tag | slugify }}" class="posts-for-tag">
+                <h2>{{ tag }}</h2>
+                <ul class="posts-list">
+                    {% for post in site.tags[tag] %}
+                        <li class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
+                            <h4>{{ post.title }}</h4>
+                            <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+                        </li>
+                        <hr class="mt-3 mb-3">
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
 </div>
