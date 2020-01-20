@@ -19,7 +19,7 @@
                         </h4>
                         <small>{{ post.date | date: "%Y-%m-%d" }}</small>
                     </div>
-                    <hr>
+                    <hr class="mt-3 mb-3">
                 </li>
                 {% assign pre_post_cnt = pre_post_cnt | plus: 1 %}
             {% endif %}
@@ -41,7 +41,7 @@
                         </h4>
                         <small>{{ post.date | date: "%Y-%m-%d" }}</small>
                     </div>
-                    <hr>
+                    <hr class="mt-3 mb-3">
                 </li>
                 {% assign next_post_cnt = next_post_cnt | plus: 1 %}
             {% endif %}
