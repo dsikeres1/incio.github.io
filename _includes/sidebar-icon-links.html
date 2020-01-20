@@ -1,4 +1,8 @@
 <nav id="sidebar-icon-links" class="-sidebar-icon-links">
+    <button type="button" class="-pc btn btn-sm btn-outline-secondary col-12" data-toggle="modal" data-target="#-search-modal">
+        검색
+    </button>
+
     {% if site.github.repo %}
         <a id="github-link"
            class="icon" title="Github Project" aria-label="Github Project"
@@ -42,11 +46,13 @@
 
     {% if search_page %}
         <a id="search-link"
-           class="icon{% if page.url == '/search' %} active{% endif %}"
-           title="Search" aria-label="Search"
-           href="{{ search_page.url | relative_url }}">
-            {% include svg/search.svg %}
+           class="-mobile -hand icon{% if page.url == '/search' %} active{% endif %}"
+           data-toggle="modal" data-target="#-search-modal">
+            <i class="material-icons" style="color: yellow">
+                search
+            </i>
         </a>
+
     {% endif %}
 
     {% include custom-icon-links.html %}
