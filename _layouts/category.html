@@ -6,7 +6,6 @@ layout: page
     {{ content }}
 {% endunless %}-->
 
-<hr class="-bold-hr">
 <ul class="posts-list">
     {% assign category = page.category | default: page.title %}
     {% for post in site.categories[category] %}
