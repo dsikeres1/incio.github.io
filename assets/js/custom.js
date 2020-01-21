@@ -64,3 +64,22 @@ function scrollFunction() {
         }
     }
 }
+
+$( document ).ready(function() {
+    const _category_page_cnt = parseInt($('.-category-posts-list li').length / 5);
+
+    $("#ul_id").append("<li>pre</li>");
+
+    for (i = 1; i <= _category_page_cnt + 1; i++) {
+        $("#ul_id").append("<li>i</li>");
+    }
+
+    $("#ul_id").append("<li>next</li>");
+
+});
+
+console.log();
+
+$('.-category-posts-list').find('li').each(function(i, e){
+    console.log($(this).text());
+});

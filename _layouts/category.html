@@ -6,7 +6,7 @@ layout: page
     {{ content }}
 {% endunless %}-->
 
-<ul class="posts-list">
+<ul class="posts-list -category-posts-list">
     {% assign category = page.category | default: page.title %}
     {% for post in site.categories[category] %}
         {% if post.released == False %}
@@ -19,3 +19,8 @@ layout: page
         {% endif %}
     {% endfor %}
 </ul>
+
+<div >
+    <ul class="-category-pagination">
+    </ul>
+</div>
