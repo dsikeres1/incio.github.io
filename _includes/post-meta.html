@@ -6,8 +6,7 @@
     <span class="post-date">{{ include.post.date | date: "%Y-%m-%d" }}</span>
     <span class="post-categories">
     {% for category in include.post.categories %}
-        &bull;
-
+        |
         {% comment %}
             Check if this category has a corresponding page before decide
             to link to it. This is an O(n^2) operations so consider removing
@@ -21,17 +20,25 @@
             {% endif %}
         {% endfor %}
 
-        {% if check_html.last == "html" %}
-            {% if category_page %}
-                <a href="{{ category_page.url | relative_url }}">
+        {% if category_page %}
+            <a href="{{ category_page.url | relative_url }}">
           {{ category_page.title | default: category_page.category }}
         </a>
-            {% else %}
-                {{ category }}
-            {% endif %}
         {% else %}
-            {{ category_page.title | default: category_page.category }}
+            {{ category }}
         {% endif %}
+
+<!--        {% if check_html.last == "html" %} -->
+<!--            {% if category_page %} -->
+<!--                <a href="{{ category_page.url | relative_url }}"> -->
+<!--          {{ category_page.title | default: category_page.category }} -->
+<!--        </a> -->
+<!--            {% else %} -->
+<!--                {{ category }} -->
+<!--            {% endif %} -->
+<!--        {% else %} -->
+<!--            {{ category_page.title | default: category_page.category }} -->
+<!--        {% endif %} -->
     {% endfor %}
   </span>
     {% if check_html.last == "html" %}</div>{% endif %}
