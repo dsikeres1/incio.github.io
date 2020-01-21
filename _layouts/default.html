@@ -7,6 +7,10 @@
     {% include sidebar.html %}
 
     {% include search-modal.html %}
+    <div class="-top-header">
+        <span class="-top-header-title">{{ page.title }}</span>
+        <div class="-top-header-meta">{% include post-meta.html post=page %}</div>
+    </div>
     <main class="-container">
         {{ content }}
     </main>

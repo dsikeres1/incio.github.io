@@ -14,6 +14,36 @@
   .-pc {
     display: block !important;
   }
+
+  .-container {
+    padding-top : 160px;
+  }
+
+  .-top-header {
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: 18rem;
+    padding-right: 18rem;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: 0.2s;
+    z-index: 1;
+    border-bottom: 1px solid #eeeeee
+  }
+
+  .-top-header .-top-header-title{
+    color: black;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .-top-header .-top-header-meta{
+    font-size: 1.5rem;
+  }
 }
 
 // 모바일
@@ -47,12 +77,19 @@
     //}
   }
 
+  .-container {
+    padding-top : 38px;
+  }
   .content {
     padding-top: 90px;
   }
 
   .page-title {
     display: none;
+  }
+
+  .-mobile-header {
+    z-index: 99;
   }
 
   .-mobile-header a {
@@ -86,5 +123,30 @@
 
   .-pagination-newer-div {
     margin-top: 0 !important;
+  }
+
+  .-top-header {
+    background-color: white;
+    padding-top: 4.4rem;
+    padding-bottom: 10px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: 0.2s;
+    z-index: 1;
+    border-bottom: 1px solid #eeeeee
+  }
+
+  .-top-header .-top-header-title{
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .-top-header .-top-header-meta{
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
   }
 }
