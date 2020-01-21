@@ -9,14 +9,12 @@ layout: default
     <ul class="posts-list">
         {% for post in paginator.posts %}
             {% if post.released == False %}
-                <li class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
-                    <h4>
-                        {{ post.title }}
-                    </h4>
-                    <small>{% include post-meta.html post=post %}</small>
+                <li class="-as-anchor -preview-list" data-href="{{ post.url | relative_url }}">
+                    <div class="-preview-list-title">{{ post.title }}</div>
+                    <div class="-preview-list-desc">{{ post.content | strip_html}}</div>
+                    <div class="-preview-list-meta"><small>{% include post-meta.html post=post %}</small></div>
                 </li>
                 <hr class="mt-3 mb-3">
-
             {% endif %}
         {% endfor %}
     </ul>
