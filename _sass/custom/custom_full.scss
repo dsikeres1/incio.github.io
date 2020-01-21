@@ -33,6 +33,30 @@
   white-space: nowrap;
 }
 
+.-preview-list {
+
+}
+
+.-preview-list .-preview-list-title{
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.-preview-list .-preview-list-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 라인수 */
+  -webkit-box-orient: vertical;
+  word-wrap:break-word;
+  line-height: 1.2em;
+  height: 3.6em;
+  font-size: 0.8rem;
+  color: grey;
+}
+
+
 // 포스팅 시 사용하는 박스 (자동 생성 code 형식은 스크롤이 생겨서 이를 없애기 위해)
 .-box-in-post {
   padding: 2rem;
