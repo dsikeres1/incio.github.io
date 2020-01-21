@@ -1,19 +1,14 @@
 <div id="sidebar" class="-pc-header">
     <header>
-        {% if page.layout == 'index' %}
-            <h1 class="site-title">
-                <a href="{{ '/' | relative_url }}">
-                    {{ site.title }}
-                </a>
-            </h1>
-        {% else %}
-            <div class="site-title">
-                <a href="{{ '/' | relative_url }}">
-                    {{ site.title }}
-                </a>
-            </div>
-        {% endif %}
-        <p class="lead">{{ site.description }}</p>
+        <!--        <div class="site-title"> -->
+        <!--            <a href="{{ '/' | relative_url }}"> -->
+        <!--                {{ site.title }} -->
+        <!--            </a> -->
+        <!--        </div> -->
+        <!--        <p class="lead">{{ site.description }}</p> -->
+        <div class="-as-anchor -hand" style="margin: auto;" data-href="{{ "/" | relative_url }}">
+            <img src="/assets/images/incio-logo.png" alt="logo-pc">
+        </div>
     </header>
     {% include sidebar-nav-links.html %}
     {% include sidebar-icon-links.html %}
@@ -32,16 +27,14 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div style="margin: auto; padding-right: 56px;">
-              <span class="" style="color:white; font-size: 1.1rem;">
-                  <!-- -custom comments -->
-                  <!--              {% if page.title == "Home" %}-->
-                  <!--      {{ site.title }}{% if site.tagline %} - {{ site.tagline }}{% endif %}-->
-                  <!--    {% else %}-->
-                  <!--      {{ page.title }} - {{ site.title }}-->
-                  <!--    {% endif %}-->
-                  <a href="{{ "/" | relative_url }}">{{ site.title }}</a>
-              </span>
+            <div class="-as-anchor -hand" style="margin: auto;" data-href="{{ "/" | relative_url }}">
+                <img src="/assets/images/incio-logo-sub.png" style="width: 60px; margin:0;" alt="logo-mobile">
+            </div>
+            <div class="-hand" style="width: 56px; text-align: center;" data-toggle="modal"
+                 data-target="#-search-modal">
+                <i class="material-icons" style="color: yellow">
+                    search
+                </i>
             </div>
         </nav>
         <div class="collapse" id="navbarToggleExternalContent">
