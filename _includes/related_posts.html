@@ -12,7 +12,7 @@
         {% endfor %}
         {% for post in site.posts %}
             {% if forloop.index > pre_index and page.categories == post.categories and pre_post_cnt < 1 %}
-                <li class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
+                <li class="-as-anchor -box-list" data-href="{{ post.url | relative_url }}">
                     <h4>
                         {{ post.title }}
                     </h4>
@@ -32,7 +32,7 @@
 
         {% for post in site.posts reversed %}
             {% if forloop.index > post_index and page.categories == post.categories and next_post_cnt < 2 %}
-                <li class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
+                <li class="-as-anchor -box-list" data-href="{{ post.url | relative_url }}">
                     <h4>
                         {{ post.title }}
                     </h4>

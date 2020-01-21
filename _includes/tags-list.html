@@ -25,7 +25,7 @@
                 <h2>{{ tag }}</h2>
                 <ul class="posts-list">
                     {% for post in site.tags[tag] %}
-                        <li class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
+                        <li class="-as-anchor -box-list" data-href="{{ post.url | relative_url }}">
                             <h4>{{ post.title }}</h4>
                             <small>{{ post.date | date: "%Y-%m-%d" }}</small>
                         </li>

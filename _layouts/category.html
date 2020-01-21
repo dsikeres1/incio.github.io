@@ -10,7 +10,7 @@ layout: page
     {% assign category = page.category | default: page.title %}
     {% for post in site.categories[category] %}
         {% if post.released == False %}
-            <li class="-as-anchor -list-box" data-href="{{ post.url | relative_url }}">
+            <li class="-as-anchor -box-list" data-href="{{ post.url | relative_url }}">
                 <h4>
                     {{ post.title }}
                 </h4>
