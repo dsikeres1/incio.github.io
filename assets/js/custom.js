@@ -46,20 +46,21 @@ function scrollFunction() {
         const _minMetaFontSize = 1.5;
         const _minPadding = 30;
         const cut = 90;
+        let $topHeader = $('.-top-header');
         // pc
         if (_scrollTop <= cut) {
-            $('.-top-header').css('padding-top', _minPadding - _scrollTop / cut * 23 + 'px');
-            $('.-top-header').css('padding-bottom', _minPadding - _scrollTop / cut * 23 + 'px');
-            $('.-top-header-title').css('fontSize', _minTitleFontSize - _scrollTop / cut / 10 * 5 + 'rem');
-            $('.-top-header-meta').css('fontSize', _minMetaFontSize - _scrollTop / cut / 10 * 7 + 'rem');
+            $topHeader.css('padding-top', _minPadding - _scrollTop / cut * 23 + 'px');
+            $topHeader.css('padding-bottom', _minPadding - _scrollTop / cut * 23 + 'px');
+            $topHeader.css('fontSize', _minTitleFontSize - _scrollTop / cut / 10 * 5 + 'rem');
+            $topHeader.css('fontSize', _minMetaFontSize - _scrollTop / cut / 10 * 7 + 'rem');
         } else if (_scrollTop > cut) {
-            $('.-top-header').css('padding-top', '7px');
-            $('.-top-header').css('padding-bottom', '7px');
+            $topHeader.css('padding-top', '7px');
+            $topHeader.css('padding-bottom', '7px');
             $('.-top-header-title').css('fontSize', '1.5rem');
             $('.-top-header-meta').css('fontSize', '0.8rem');
         } else {
-            $('.-top-header').css('padding-top', '30px');
-            $('.-top-header').css('padding-bottom', '30px');
+            $topHeader.css('padding-top', '30px');
+            $topHeader.css('padding-bottom', '30px');
             $('.-top-header-title').css('fontSize', '2rem');
             $('.-top-header-meta').css('fontSize', '1.5rem');
         }
