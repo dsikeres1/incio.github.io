@@ -48,6 +48,12 @@
 
 // 모바일
 @media (max-width: 49rem - 0.01rem) {
+  body {
+    // 모바일에서 modal-open 시 배경 색 보이는 이슈 해결
+    background-color: white;
+    background-image: none;
+  }
+
   .-mobile {
     display: block !important;
   }
