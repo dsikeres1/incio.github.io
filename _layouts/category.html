@@ -6,22 +6,34 @@ layout: page
     {{ content }}
 {% endunless %}-->
 
-<ul class="posts-list -category-posts-list">
-    {% assign category = page.category | default: page.title %}
-    {% for post in site.categories[category] %}
-        {% if post.released == False %}
-            <li class="-as-anchor -preview-list -after-hr" data-href="{{ post.url | relative_url }}">
-                <div class="-preview-list-title">{{ post.title }}</div>
-                <div class="-preview-list-desc">{{ post.content | strip_html}}</div>
-                <div class="-preview-list-meta"><small>{{ post.date | date: "%Y-%m-%d" }}</small></div>
-            </li>
-        {% endif %}
-    {% endfor %}
-</ul>
+
+<ul id="static-pagination-list" class="posts-list"></ul>
 
 <div class="-pagination">
     <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-end -category-pagination">
-    </ul>
+        <ul id="static-pagination" class="pagination justify-content-end">
+        </ul>
     </nav>
 </div>
+
+<script src="/assets/js/static-pagination.js"></script>
+<script>
+    let category_list = [];
+    {% assign category = page.category | default: page.title %}
+    {% for post in site.categories[category] %}
+        {% if post.released == False %}
+            category_list.push(
+                {
+                    'url': '{{ post.url | relative_url }}',
+                    'title': '{{ post.title }}',
+                    'content': '{{ post.content | strip_html | strip_newlines }}',
+                    'date': '{{ post.date | date: "%Y-%m-%d" }}'
+                }
+            );
+        {% endif %}
+    {% endfor %}
+
+    $(document).ready(function () {
+        pagination(5, 1, category_list);
+    });
+</script>

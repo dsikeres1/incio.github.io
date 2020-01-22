@@ -1,69 +1,76 @@
-// TODO: 10페이지가 넘어갈 경우는 추후 해보자... 아직 갈길이 구만리..
+let _currentPage, $category_list;
 
-// TODO: js 정형화
-
-const _category_page_cnt = parseInt($('.-category-posts-list li').length / 5) + 1;
-let _category_page;
-$(document).ready(function () {
-    if (_category_page_cnt > 1) {
-        for (i = 0; i <= _category_page_cnt + 1; i++) {
-            let _value;
-
-            if (i === 0) {
-                _value = '<i class="material-icons" style="font-size: 14px;">arrow_back_ios</i>';
-            } else if (i === _category_page_cnt + 1) {
-                _value = '<i class="material-icons" style="font-size: 14px;">arrow_forward_ios</i>';
-            } else {
-                _value = i;
-            }
-            $(".-category-pagination").append('<li class="page-item"><a class="page-link" href="#" onclick="categoryPagination(' + i + ');">' + _value + '</a></li>');
-        }
-        categoryPagination(1);
+function pagination(perPage, page, category_list) {
+    let $list = $('#static-pagination-list');
+    let $pagination = $('#static-pagination');
+    if (category_list !== null) {
+        $category_list = category_list;
     }
-});
-
-function categoryPagination(page) {
-    if (page === 0 && _category_page !== 1) {
+    const _paginationLength = parseInt($category_list.length / perPage) + 1;
+    if (page === 0 && _currentPage !== 1) {
         // 이전
-        categoryPagination(_category_page - 1);
-    } else if (page === _category_page_cnt + 1 && _category_page !== _category_page_cnt + 1) {
+        pagination(5, _currentPage - 1, null);
+    } else if (page === _paginationLength + 1 && _currentPage !== _paginationLength + 1) {
         // 다음
-        categoryPagination(_category_page + 1);
+        pagination(5, _currentPage + 1, null);
     } else {
         // 일반 선택
-        _category_page = page;
-
-        let _pagination_size = $('.-category-pagination li').length;
-
-        $('.-category-posts-list').find('li').each(function (i, e) {
-            if (page * 5 - 5 <= i && i < page * 5) {
-                $(this).show();
-            } else {
-                $(this).hide();
+        _currentPage = page;
+        $list.empty();
+        for (let i = _currentPage * 5 - 5; i < _currentPage * 5; i++) {
+            try {
+                // list 내용 수정 확인
+                $list.append('' +
+                    '<li class="-as-anchor -preview-list -after-hr" data-href="' + $category_list[i].url + '">' +
+                    '<div class="-preview-list-title">' + $category_list[i].title + '</div>' +
+                    '<div class="-preview-list-desc">' + $category_list[i].content + '</div>' +
+                    '<div class="-preview-list-meta"><small>' + $category_list[i].date + '</small></div></li>');
+            } catch (exception) {
+                break;
             }
-        });
+        }
+    }
 
-        $('.-category-pagination').find('li').each(function (i, e) {
-            // pagination에 pre, next 버튼 활성/비활성화
-            if (_pagination_size > 3 && page === 1) {
-                $('.-category-pagination li:eq(0)').addClass("disabled");
-                $('.-category-pagination li:last').removeClass("disabled");
-            } else if (_pagination_size > 3 && page === _category_page_cnt) {
-                $('.-category-pagination li:eq(0)').removeClass("disabled");
-                $('.-category-pagination li:last').addClass("disabled");
-            } else if ($('.-category-pagination li').length > 3) {
-                $('.-category-pagination li:eq(0)').removeClass("disabled");
-                $('.-category-pagination li:last').removeClass("disabled");
+    if (_paginationLength > 1) {
+        $pagination.empty();
+        if (_currentPage === 1) {
+            $pagination.append('<li class="page-item disabled">' +
+                '<a class="page-link" href="#" onclick="pagination(' + perPage + ', ' + 0 + ', ' + null + ');">' +
+                '<i class="material-icons" style="font-size: 14px;">arrow_back_ios</i>' +
+                '</a>' +
+                '</li>');
+        } else {
+            $pagination.append('<li class="page-item">' +
+                '<a class="page-link" href="#" onclick="pagination(' + perPage + ', ' + 0 + ', ' + null + ');">' +
+                '<i class="material-icons" style="font-size: 14px;">arrow_back_ios</i>' +
+                '</a>' +
+                '</li>');
+        }
+
+        for (let _page = 1; _page <= _paginationLength; _page++) {
+            if (_page === _currentPage) {
+                $pagination.append('<li class="page-item">' +
+                    '<a class="page-link active" href="#" onclick="pagination(' + perPage + ', ' + _page + ', ' + null + ');">' + _page + '</a>' +
+                    '</li>');
             } else {
-                $('.-category-pagination li:eq(0)').addClass("disabled");
-                $('.-category-pagination li:last').addClass("disabled");
+                $pagination.append('<li class="page-item">' +
+                    '<a class="page-link" href="#" onclick="pagination(' + perPage + ', ' + _page + ', ' + null + ');">' + _page + '</a>' +
+                    '</li>');
             }
-            // pagination에 page 선택/비선택
-            if (page === i) {
-                $(this).addClass("active");
-            } else {
-                $(this).removeClass("active");
-            }
-        });
+        }
+
+        if (_currentPage === _paginationLength) {
+            $pagination.append('<li class="page-item disabled">' +
+                '<a class="page-link" href="#" onclick="pagination(' + perPage + ', ' + (_paginationLength + 1) + ', ' + null + ');">' +
+                '<i class="material-icons" style="font-size: 14px;">arrow_forward_ios</i>' +
+                '</a>' +
+                '</li>');
+        } else {
+            $pagination.append('<li class="page-item">' +
+                '<a class="page-link" href="#" onclick="pagination(' + perPage + ', ' + (_paginationLength + 1) + ', ' + null + ');">' +
+                '<i class="material-icons" style="font-size: 14px;">arrow_forward_ios</i>' +
+                '</a>' +
+                '</li>');
+        }
     }
 }
