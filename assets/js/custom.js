@@ -69,13 +69,13 @@ function scrollFunction() {
 const _category_page_cnt = parseInt($('.-category-posts-list li').length / 5) + 1;
 $(document).ready(function () {
 
-    $(".-category-pagination").append('<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true" data-page="-">Previous</a></li>');
+    $(".-category-pagination").append('<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true" data-page="-1">Previous</a></li>');
 
     for (i = 1; i <= _category_page_cnt; i++) {
         $(".-category-pagination").append('<li class="page-item"><a class="page-link" href="#" onclick="categoryPagination(' + i + ');">' + i + '</a></li>');
     }
 
-    $(".-category-pagination").append('<li class="page-item"><a class="page-link" href="#" data-page="+">Next</a></li>');
+    $(".-category-pagination").append('<li class="page-item"><a class="page-link" href="#" tabindex="++1" data-page="++1">Next</a></li>');
     categoryPagination(1);
 });
 
@@ -83,17 +83,9 @@ $(document).ready(function () {
 function categoryPagination(page) {
     $('.-category-posts-list').find('li').each(function (i, e) {
         if (page * 5 - 5 <= i && i < page * 5) {
-            $(this).addClass("d-block").removeClass("d-none");
+            $(this).show();
         } else {
-            $(this).addClass("d-none").removeClass("d-block");
-        }
-    });
-
-    $('.-category-posts-list').find('hr').each(function (i, e) {
-        if (page * 5 - 5 <= i && i < page * 5) {
-            $(this).addClass("d-block").removeClass("d-none");
-        } else {
-            $(this).addClass("d-none").removeClass("d-block");
+            $(this).hide();
         }
     });
 
@@ -131,5 +123,4 @@ function categoryPagination(page) {
             $(this).removeClass("active");
         }
     });
-
 }
