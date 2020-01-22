@@ -17,7 +17,7 @@ function pagination(perPage, page, category_list) {
         // 일반 선택
         _currentPage = page;
         $list.empty();
-        for (let i = _currentPage * 5 - 5; i < _currentPage * 5; i++) {
+        for (let i = _currentPage * perPage - perPage; i < _currentPage * perPage; i++) {
             try {
                 // list 내용 수정 확인
                 $list.append('' +
