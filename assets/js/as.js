@@ -9,6 +9,8 @@
         return this.each(function () {
             const $this = $(this);
 
+            $this.css('cursor', 'pointer');
+
             if ($this.is('select')) {
                 $this.change(function () {
                     const href = $(this).find('option:selected').data().href;
@@ -46,7 +48,6 @@
 
     $(function () {
         $('.-as-anchor').asAnchor();
-        $('.-as-anchor').css('cursor', 'pointer');
         $('.-as-submit').asSubmit();
         $('.-as-prevent-default').asPreventDefault();
     });
