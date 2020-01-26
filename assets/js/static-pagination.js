@@ -2,38 +2,54 @@
     title: static-pagination.js
     description: Pagination for static pages based on bootstrap and jquery (eg. jekyll)
     author: Incio
-    github: https://github.com/inci-o
+    github: https://github.com/inci-o/static-pagination
     site: https://inci-o/github.io
+    email: inciojs@gmail.com
     version: 0.1.0
  */
 
-let _currentPage, $category_list;
+let _currentPage, _perPage, _showPage, _paginationLength, $staticPaginationList;
 
-function staticPagination(perPage, page, category_list) {
-    let $list = $('#static-pagination-list');
-    let $pagination = $('#static-pagination');
-    if (category_list !== null) {
-        $category_list = category_list;
-    }
-    const _paginationLength = parseInt($category_list.length / perPage) + 1;
-    if (page === 0 && _currentPage !== 1) {
-        // 이전
-        staticPagination(5, _currentPage - 1, null);
-    } else if (page === _paginationLength + 1 && _currentPage !== _paginationLength + 1) {
-        // 다음
-        staticPagination(5, _currentPage + 1, null);
+let $list = $('#static-pagination-list');
+let $pagination = $('#static-pagination');
+function staticPagination(userList, userOptions) {
+    $staticPaginationList = userList;
+
+    if (userOptions.perPage != null) {
+        _perPage = userOptions.perPage;
     } else {
-        // 일반 선택
+        _perPage = 10;
+    }
+
+    if (userOptions.showPage != null) {
+        _showPage = userOptions.showPage;
+    } else {
+        _showPage = 10;
+    }
+    _paginationLength = parseInt($staticPaginationList.length / _perPage) + 1;
+    _staticPagination(1);
+}
+
+
+function _staticPagination(page) {
+    if (page === 0 && _currentPage !== 1) {
+        // 이전 (previous)
+        _staticPagination(_currentPage - 1);
+    } else if (page === _paginationLength + 1 && _currentPage !== _paginationLength + 1) {
+        // 다음 (next)
+        _staticPagination(_currentPage + 1);
+    } else {
+        // 일반 선택 (normal select)
         _currentPage = page;
         $list.empty();
-        for (let i = _currentPage * perPage - perPage; i < _currentPage * perPage; i++) {
+        for (let i = _currentPage * _perPage - _perPage; i < _currentPage * _perPage; i++) {
             try {
                 // list 내용 수정 확인
                 $list.append('' +
-                    '<li class="-as-anchor -preview-list -after-hr" data-href="' + $category_list[i].url + '">' +
-                    '<div class="-preview-list-title">' + $category_list[i].title + '</div>' +
-                    '<div class="-preview-list-desc">' + $category_list[i].content + '</div>' +
-                    '<div class="-preview-list-meta"><small>' + $category_list[i].date + '</small></div></li>');
+                    '<li class="-as-anchor -preview-list -after-hr" data-href="' + $staticPaginationList[i].url + '">' +
+                    '<div class="-preview-list-title">' + $staticPaginationList[i].title + '</div>' +
+                    '<div class="-preview-list-desc">' + $staticPaginationList[i].content + '</div>' +
+                    '<div class="-preview-list-meta"><small>' + $staticPaginationList[i].date + '</small></div></li>');
             } catch (exception) {
                 break;
             }
@@ -44,13 +60,13 @@ function staticPagination(perPage, page, category_list) {
         $pagination.empty();
         if (_currentPage === 1) {
             $pagination.append('<li class="page-item disabled">' +
-                '<a class="page-link" href="#" onclick="staticPagination(' + perPage + ', ' + 0 + ', ' + null + ');">' +
+                '<a class="page-link" href="#" onclick="_staticPagination(' + 0 + ');">' +
                 '<i class="material-icons" style="font-size: 14px;">arrow_back_ios</i>' +
                 '</a>' +
                 '</li>');
         } else {
             $pagination.append('<li class="page-item">' +
-                '<a class="page-link" href="#" onclick="staticPagination(' + perPage + ', ' + 0 + ', ' + null + ');">' +
+                '<a class="page-link" href="#" onclick="_staticPagination(' + 0 + ');">' +
                 '<i class="material-icons" style="font-size: 14px;">arrow_back_ios</i>' +
                 '</a>' +
                 '</li>');
@@ -58,25 +74,25 @@ function staticPagination(perPage, page, category_list) {
 
         for (let _page = 1; _page <= _paginationLength; _page++) {
             if (_page === _currentPage) {
-                $pagination.append('<li class="page-item">' +
-                    '<a class="page-link active" href="#" onclick="staticPagination(' + perPage + ', ' + _page + ', ' + null + ');">' + _page + '</a>' +
+                $pagination.append('<li class="page-item active">' +
+                    '<a class="page-link" href="#" onclick="_staticPagination(' + _page + ');">' + _page + '</a>' +
                     '</li>');
             } else {
                 $pagination.append('<li class="page-item">' +
-                    '<a class="page-link" href="#" onclick="staticPagination(' + perPage + ', ' + _page + ', ' + null + ');">' + _page + '</a>' +
+                    '<a class="page-link" href="#" onclick="_staticPagination(' + _page + ');">' + _page + '</a>' +
                     '</li>');
             }
         }
 
         if (_currentPage === _paginationLength) {
             $pagination.append('<li class="page-item disabled">' +
-                '<a class="page-link" href="#" onclick="staticPagination(' + perPage + ', ' + (_paginationLength + 1) + ', ' + null + ');">' +
+                '<a class="page-link" href="#" onclick="_staticPagination(' + (_paginationLength + 1) + ');">' +
                 '<i class="material-icons" style="font-size: 14px;">arrow_forward_ios</i>' +
                 '</a>' +
                 '</li>');
         } else {
             $pagination.append('<li class="page-item">' +
-                '<a class="page-link" href="#" onclick="staticPagination(' + perPage + ', ' + (_paginationLength + 1) + ', ' + null + ');">' +
+                '<a class="page-link" href="#" onclick="_staticPagination(' + (_paginationLength + 1) + ');">' +
                 '<i class="material-icons" style="font-size: 14px;">arrow_forward_ios</i>' +
                 '</a>' +
                 '</li>');

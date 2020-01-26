@@ -33,5 +33,7 @@ layout: page
         {% endif %}
     {% endfor %}
 
-    staticPagination(5, 1, category_list);
+    staticPagination(category_list, {
+        perPage: 5
+    });
 </script>
