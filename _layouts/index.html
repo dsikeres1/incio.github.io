@@ -9,7 +9,7 @@ layout: default
     <ul class="posts-list">
         {% for post in paginator.posts %}
             {% if post.released == False %}
-                <li class="-as-anchor -preview-list -after-hr" data-href="{{ post.url | relative_url }}">
+                <li class="-as-anchor -preview-list -after-hr -as-hover" data-href="{{ post.url | relative_url }}">
                     <div class="-preview-list-title">{{ post.title }}</div>
                     <div class="-preview-list-desc">{{ post.content | strip_html}}</div>
                     <div class="-preview-list-meta"><small>{% include post-meta.html post=post %}</small></div>

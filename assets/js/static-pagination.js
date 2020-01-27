@@ -46,7 +46,7 @@ function _staticPagination(page) {
             try {
                 // list 내용 수정 확인
                 $list.append('' +
-                    '<li class="-as-anchor -preview-list -after-hr" data-href="' + $staticPaginationList[i].url + '">' +
+                    '<li class="-as-anchor -preview-list -after-hr -as-hover" data-href="' + $staticPaginationList[i].url + '">' +
                     '<div class="-preview-list-title">' + $staticPaginationList[i].title + '</div>' +
                     '<div class="-preview-list-desc">' + $staticPaginationList[i].content + '</div>' +
                     '<div class="-preview-list-meta"><small>' + $staticPaginationList[i].date + '</small></div></li>');
