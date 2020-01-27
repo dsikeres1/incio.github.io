@@ -304,6 +304,8 @@ let _$src_8 = {};
     json: [],
     success: Function.prototype,
     searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li><hr>',
+    // searchResultTemplate: '<li class="-as-anchor -box-list" data-href="{url}"><h4>{title}</h4></li><hr>',
+    // searchResultTemplate: '<li class="-as-anchor -box-list" data-href="{url}"><h4>{title}</h4></li><hr class="mt-3 mb-3">',
     templateMiddleware: Function.prototype,
     sortMiddleware: function () {
       return 0;
