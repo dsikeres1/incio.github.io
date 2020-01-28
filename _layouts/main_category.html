@@ -1,0 +1,20 @@
+---
+layout: page
+---
+{% assign pages_list = site.pages|sort:"sidebar_sort_order" %}
+{% assign main_categorys = site.pages | map: "main_category" | uniq %}
+
+<ul class="posts-list">
+
+    {% for post in pages_list %}
+        {% if page.main_category == post.main_cateogry and post.main_category != null %}
+            <li class="-as-anchor -box-list -as-hover" data-href="{{ post.url | relative_url }}">
+                <h4>
+                    {{ post.title }}
+                </h4>
+            </li>
+            <hr class="mt-3 mb-3">
+
+        {% endif %}
+    {% endfor %}
+</ul>
