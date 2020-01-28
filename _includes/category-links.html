@@ -2,40 +2,30 @@
     Dynamically generate list of links to all category pages
 {% endcomment %}
 {% assign pages_list = site.pages|sort:"sidebar_sort_order" %}
-{% assign pages_groups = site.pages | map: "group" | uniq %}
-{% assign current_page = null %}
-<!-- -custom-comments -->
-<!--{% for node in pages_list %}-->
-        <!--{% if node.title != null %}-->
-        <!--{% if node.layout == "category" %}-->
-    <!--<a class="category-link {% if page.url == node.url %} active{% endif %}"-->
-    <!--   href="{{ node.url | relative_url }}">{{ node.title }}</a>-->
-    <!--{% endif %}-->
-    <!--{% endif %}-->
-<!--{% endfor %}-->
+{% assign main_categorys = site.pages | map: "main_category" | uniq %}
 
-{% for group in pages_groups %}
-    {% if group != null %}
-        <div id="-sidebar-accordion-{{ group }}">
+{% for main_category in main_categorys %}
+    {% if main_category != null %}
+        <div id="-sidebar-accordion-{{ main_category }}">
             <div>
-                <a class="category-link -hand -sidebar-group-link {% if page.group == group and page.url != '/' %}active {% endif %}"
-                   id="-sidebar-accordion-heading-{{ group }}">
-                    <div data-toggle="collapse" data-target="#-sidebar-collapse-{{ group }}"
-                         aria-expanded="{% if page.group == '{{ group }}' %}true{% else %}false{% endif %}"
-                         aria-controls="-sidebar-collapse-{{ group }}">
-                        {{ group }} <i class="material-icons">
-                            {% if page.group == group and page.url != '/' %}expand_more{% else %}expand_less{% endif %}
+                <a class="category-link -hand -sidebar-main-category-link {% if page.main_category == main_category and page.url != '/' %}active {% endif %}"
+                   id="-sidebar-accordion-heading-{{ main_category }}">
+                    <div data-toggle="collapse" data-target="#-sidebar-collapse-{{ main_category }}"
+                         aria-expanded="{% if page.main_category == '{{ main_category }}' %}true{% else %}false{% endif %}"
+                         aria-controls="-sidebar-collapse-{{ main_category }}">
+                        {{ main_category }} <i class="material-icons">
+                            {% if page.main_category == main_category and page.url != '/' %}expand_more{% else %}expand_less{% endif %}
                         </i>
                     </div>
                 </a>
                 {% for node in pages_list %}
-                    {% if node.group == group %}
+                    {% if node.main_category == main_category %}
                         {% assign categories_cnt = site.categories[node.title] %}
                         <!-- TODO: div에 href 달아서 링크 영역 확대 시키기 -->
-                        <div id="-sidebar-collapse-{{ group }}"
-                             class="-sidebar-collapse collapse {% if page.group == group and page.url != '/' %}show{% endif %}"
-                             aria-labelledby="-sidebar-accordion-heading-{{ group }}"
-                             data-parent="#-sidebar-accordion-{{ group }}">
+                        <div id="-sidebar-collapse-{{ main_category }}"
+                             class="-sidebar-collapse collapse {% if page.main_category == main_category and page.url != '/' %}show{% endif %}"
+                             aria-labelledby="-sidebar-accordion-heading-{{ main_category }}"
+                             data-parent="#-sidebar-accordion-{{ main_category }}">
                             <a class="category-link {% if page.url == node.url %}active{% endif %}"
                                href="{{ node.url | relative_url }}">
                                 <i class="material-icons">chevron_right</i>{{ node.title }}
