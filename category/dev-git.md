@@ -1,8 +1,7 @@
 ---
 layout: category
+main_category: Dev
 title: Git
-group: Dev
 sidebar_sort_order: 1
+permalink : '/dev/git'
 ---
-
-Dev/Git
