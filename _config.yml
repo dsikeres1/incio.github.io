@@ -57,3 +57,5 @@ disqus:
   shortname: incio
 
 google_analytics: UA-155325121-1
+
+permalink: /:categories/:title
