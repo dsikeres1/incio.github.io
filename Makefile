@@ -1,4 +1,8 @@
 run:
 	bundle exec jekyll serve
 
-.PHONY: run
+port:
+	lsof -i: 4000
+	#kill -9 pid
+
+.PHONY: run port
