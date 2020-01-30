@@ -4,7 +4,6 @@
 <section class="related">
     <ul class="posts-list">
         <!-- TODO: 아래에 뜨는 관계 된 post 정의 고민해보자 -->
-        <h3>[{{ page.categories }}] 이전 포스트</h3>
         {% for post in site.posts %}
             {% if post.title == page.title %}
                 {% assign pre_index = forloop.index %}
@@ -12,6 +11,10 @@
         {% endfor %}
         {% for post in site.posts %}
             {% if forloop.index > pre_index and page.categories == post.categories and pre_post_cnt < 1 %}
+                {% if pre_post_cnt == 0 %}
+                    <h3>[{{ page.categories.last }}] 이전 포스트</h3>
+                {% endif %}
+
                 <li class="-as-anchor -box-list -as-hover" data-href="{{ post.url | relative_url }}">
                     <h4>
                         {{ post.title }}
@@ -23,7 +26,7 @@
             {% endif %}
         {% endfor %}
 
-        <h3>[{{ page.categories }}] 다음 포스트</h3>
+
         {% for post in site.posts reversed %}
             {% if post.title == page.title %}
                 {% assign post_index = forloop.index %}
@@ -32,6 +35,10 @@
 
         {% for post in site.posts reversed %}
             {% if forloop.index > post_index and page.categories == post.categories and next_post_cnt < 2 %}
+                {% if next_post_cnt == 0 %}
+                    <h3>[{{ page.categories.last }}] 다음 포스트</h3>
+                {% endif %}
+
                 <li class="-as-anchor -box-list -as-hover" data-href="{{ post.url | relative_url }}">
                     <h4>
                         {{ post.title }}
