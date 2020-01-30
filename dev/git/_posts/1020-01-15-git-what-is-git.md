@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Git guide] Git Guide (가이드)"
+title: "[Git] Git Guide (가이드)"
 categories:
   - Git
 tags:
