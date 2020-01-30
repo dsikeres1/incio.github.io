@@ -118,3 +118,23 @@
   //background-color: #E9ECEF;
   background-color: #F6F9FC;
 }
+
+.language-terminal-box {
+  padding: 1.5rem;
+  margin-bottom: 0;
+  font-size: .8rem;
+  line-height: 1.4;
+  background-color: #212121;
+  border-radius: .5rem;
+  max-width: 100%;
+  margin-top: 0;
+  font-family: $code-font-family;
+  display: block;
+  box-sizing: border-box;
+  color: #f8f8f2
+}
+
+
+.language-terminal-box ol {list-style-type: none; padding: 0; margin: 0;}
+.language-terminal-box li {padding: 0; margin: 0;}
+
