@@ -98,4 +98,5 @@ function _staticPagination(page) {
                 '</li>');
         }
     }
+    $('.-as-anchor').asAnchor();
 }
