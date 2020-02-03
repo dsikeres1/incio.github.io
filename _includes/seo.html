@@ -1,0 +1,62 @@
+<meta name="title" content="
+    {%- if page.title == "Home" -%}
+        {{ site.title }}{% if site.tagline %} | {{ site.tagline }}{% endif %}
+    {%- else -%}
+        {{ page.title }} | {{ site.title }}
+    {%- endif -%}
+">
+
+<meta name="description" content="
+    {%- if page.description != null -%}
+        {{ page.description }}
+    {%- else -%}
+        {{ site.title }}
+    {%- endif -%}
+">
+
+<meta name="keywords" content="
+    {%- for tag in page.tags -%}
+        {%- if forloop.first != true -%}
+            , {{ tag }}
+        {%- else -%}
+            {{ tag }}
+        {%- endif -%}
+    {%- endfor -%}
+">
+
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="
+    {%- if page.title == "Home" -%}
+        {{ site.title }}{% if site.tagline %} | {{ site.tagline }}{% endif %}
+    {%- else -%}
+        {{ page.title }} | {{ site.title }}
+    {%- endif -%}
+">
+<meta property="og:description" content="
+    {%- if page.description != null -%}
+        {{ page.description }}
+    {%- else -%}
+        {{ site.title }}
+    {%- endif -%}
+">
+<meta property="og:image" content="{{ site.url | absolute_url }}/assets/images/incio-og-logo.png">
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:url" content="{{ page.url | absolute_url }}"/>
+<meta name="twitter:title" content="
+    {%- if page.title == "Home" -%}
+        {{ site.title }}{% if site.tagline %} | {{ site.tagline }}{% endif %}
+    {%- else -%}
+        {{ page.title }} | {{ site.title }}
+    {%- endif -%}
+">
+<meta name="twitter:description" content="
+    {%- if page.description != null -%}
+        {{ page.description }}
+    {%- else -%}
+        {{ site.title }}
+    {%- endif -%}
+">
+<meta name="twitter:image" content="{{ site.url | absolute_url }}/assets/images/incio-og-logo.png">
+<meta name="twitter:image:alt" content="Incio's"/>
