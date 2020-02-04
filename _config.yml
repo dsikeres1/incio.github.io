@@ -8,8 +8,8 @@ kramdown:
 
 # Setup
 title:            Incio's
-tagline:          'Home'
-description:      "블로그명을 아직 못 정했음.."
+tagline:          "Incio's"
+description:      "Incio's"
 url:              https://inci-o.github.io
 baseurl:          ''
                   # the optional subpath of your site, e.g. "/blog"
@@ -45,6 +45,10 @@ plugins:
   - jekyll-gist
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-seo-tag
+
+lang:
+  ko-KR
 
 # Sidebar link settings
 sidebar_home_link:  true
